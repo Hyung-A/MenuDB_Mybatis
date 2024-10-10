@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ohgiraffers.dao.OrderMapper">
+    <resultMap id="orderResultMap" type="com.ohgiraffers.common.DTO.OrderDTO">
+        <id property="code" column="ORDER_CODE"/>
+        <result property="date" column="ORDER_DATE"/>
+        <result property="time" column="ORDER_TIME"/>
+        <result property="totalPrice" column="TOTAL_ORDER_PRICE"/>
+    </resultMap>
+
+    <select id="selectAllOrder" resultMap="orderResultMap">
+        SELECT
+            ORDER_CODE
+        ,   ORDER_DATE
+        ,   ORDER_TIME
+        ,   TOTAL_ORDER_PRICE
+        FROM TBL_ORDER;
+    </select>
+</mapper>
