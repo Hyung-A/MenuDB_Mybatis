@@ -20,4 +20,17 @@
          ORDER BY A.CATEGORY_CODE
     </select>
 
+    <insert id="insertNewCategory" parameterType="com.ohgiraffers.common.DTO.CategoryDTO">
+        INSERT INTO TBL_CATEGORY
+        (
+           CATEGORY_NAME
+         , REF_CATEGORY_CODE
+        )
+        VALUES
+        (
+           #{ categoryName }
+         , #{ refCategoryCode }
+        )
+    </insert>
+
 </mapper>

@@ -1,11 +1,31 @@
 package com.ohgiraffers.view;
 
+import com.ohgiraffers.common.DTO.CategoryDTO;
 import com.ohgiraffers.controller.CategoryController;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class CategoryView {
+    public static void main(String[] args) {
 
+        CategoryController categoryController = new CategoryController();
+
+        Scanner sc = new Scanner(System.in);
+
+        do {
+            System.out.println("================ Category 테이블 메뉴 ================");
+            System.out.println("1. CATEGOTY 서브메뉴 조회");
+            System.out.print("메뉴를 입력해주세요 : ");
+            int no = sc.nextInt();
+
+            switch (no) {
+                case 1 : startCategory(); break;
+            }
+        }while(true);
+
+    }
 
     public static void startCategory(){
 
@@ -25,15 +45,31 @@ public class CategoryView {
 
             switch (no) {
                 case 1:
-                    categoryController.selectAllCategory();
-                    break;
+                    categoryController.selectAllCategory(); break;
+                case 2 : categoryController.insertNewCategory(inputCategory()); break;
                 case 9:
                     return;
             }
         }while(true);
 
+    }
 
+    private static Map<String, String> inputCategory(){
 
+        Scanner sc = new Scanner(System.in);
+//        System.out.println("추가할 카테고리 코드를 입력해주세요 : ");
+//        String categoryCode = sc.nextLine();
+        System.out.println("추가할 카테고리 이름을 입력해주세요 : ");
+        String categoryName = sc.nextLine();
+        System.out.println("추가할 참조 카테고리 코드를 입력해주세요 : ");
+        String refCategoryCode = sc.nextLine();
+
+        Map<String, String> parameter = new HashMap<>();
+//        parameter.put("categoryCode", categoryCode);
+        parameter.put("categoryName", categoryName);
+        parameter.put("refCategoryCode", refCategoryCode);
+
+        return parameter;
     }
 
 

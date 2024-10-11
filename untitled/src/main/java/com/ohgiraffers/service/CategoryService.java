@@ -23,4 +23,22 @@ public class CategoryService {
         return categoryList;
     }
 
+    public boolean insertNewCategory(CategoryDTO category){
+
+        SqlSession sqlSession = getSqlSession();
+
+        CategoryMapper mapper = sqlSession.getMapper(CategoryMapper.class);
+
+        int result = mapper.insertNewCategory(category);
+
+        if(result > 0){
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+        sqlSession.close();
+
+        return result > 0 ? true : false;
+    }
+
 }
