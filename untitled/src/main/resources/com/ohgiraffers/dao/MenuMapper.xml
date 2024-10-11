@@ -2,6 +2,26 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper>
+<mapper namespace="com.ohgiraffers.dao.MenuMapper">
+
+    <resultMap id="menuResultMap" type="com.ohgiraffers.common.DTO.MenuDTO">
+        <id property="code" column="MENU_CODE"/>
+        <result property="name" column="MENU_NAME"/>
+        <result property="price" column="MENU_PRICE"/>
+        <result property="category" column="CATEGORY_CODE"/>
+        <result property="oederableStatus" column="OEDERABLE_STATUS"/>
+    </resultMap>
+
+    <select id="selectAllMenu" resultMap="menuResultMap">
+        SELECT
+               MENU_CODE
+             , MENU_NAME
+             , MENU_PRICE
+             , CATEGORY_CODE
+             , ORDERABLE_STATUS
+          FROM TBL_MENU
+         WHERE ORDERABLE_STATUS = 'Y'
+         ORDER BY MENU_CODE
+    </select>
 
 </mapper>
