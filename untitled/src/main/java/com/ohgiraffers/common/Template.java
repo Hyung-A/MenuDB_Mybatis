@@ -1,6 +1,9 @@
 package com.ohgiraffers.common;
 
+
 import com.ohgiraffers.dao.MenuMapper;
+import com.ohgiraffers.dao.CategoryMapper;
+
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.Configuration;
@@ -25,7 +28,8 @@ public class Template {
 
             Configuration configuration = new Configuration(environment);
 
-//            configuration.addMapper(MenuMapper.class);
+            configuration.addMapper(MenuMapper.class);
+            configuration.addMapper(CategoryMapper.class);
 
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
 
