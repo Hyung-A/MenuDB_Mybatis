@@ -25,7 +25,7 @@ public class Template {
 
             Configuration configuration = new Configuration(environment);
 
-            configuration.addMapper(MenuMapper.class);
+//            configuration.addMapper(MenuMapper.class);
 
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
 
