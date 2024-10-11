@@ -22,6 +22,7 @@ public class OrderPrintResult {
             case "selectOne" : errorMessage = "주문 내역 조회에 실패했습니다."; break;
             case "insert" : errorMessage = "주문 내역 추가에 실패했습니다."; break;
             case "update" : errorMessage = "주문 내역 수정에 실패했습니다."; break;
+            case "delete" : errorMessage = "주문 내역 삭제에 실패했습니다."; break;
         }
 
         System.out.println(errorMessage);
@@ -36,6 +37,7 @@ public class OrderPrintResult {
         switch (message) {
             case "insert" : successMessage = "주문 내역 추가에 성공했습니다."; break;
             case "update" : successMessage = "주문 내역 수정에 성공했습니다."; break;
+            case "delete" : successMessage = "주문 내역 삭제에 성공했습니다."; break;
         }
 
         System.out.println(successMessage);

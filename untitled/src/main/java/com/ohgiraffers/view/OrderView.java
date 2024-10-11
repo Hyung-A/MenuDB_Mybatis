@@ -32,6 +32,7 @@ public class OrderView {
                 case 2 :  orderController.selectOrderByCode(inputOrderCode()); break;
                 case 3 :  orderController.insertOrder(inputOrderInfo()); break;
                 case 4 :  orderController.modifyOrder(modifyOrderInfo()); break;
+                case 5 :  orderController.deleteOrder(inputOrderCode()); break;
             }
 
         }while(true);
@@ -80,7 +81,7 @@ public class OrderView {
 
     private Map<String, String> inputOrderCode() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("조회하실 주문 번호를 입력해주세요 : ");
+        System.out.println("주문 번호를 입력해주세요 : ");
         String orderCode = sc.nextLine();
 
         Map<String, String> code = new HashMap<>();

@@ -48,4 +48,10 @@
         ,   TOTAL_ORDER_PRICE = #{ totalPrice }
         WHERE ORDER_CODE = #{ code }
     </update>
+
+    <delete id="deleteOrder">
+        DELETE
+            FROM TBL_ORDER
+        WHERE ORDER_CODE = #{ code }
+    </delete>
 </mapper>

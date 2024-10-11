@@ -13,4 +13,6 @@ public interface OrderMapper {
     int insertOrder(OrderDTO order);
 
     int modifyOrder(OrderDTO order);
+
+    int deleteOrder(int code);
 }

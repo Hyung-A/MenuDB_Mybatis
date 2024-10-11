@@ -70,4 +70,22 @@ public class OrderService {
 
         return result;
     }
+
+    public int deleteOrder(int code) {
+        SqlSession sqlSession = getSqlSession();
+
+        OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+
+        int result = orderMapper.deleteOrder(code);
+
+        if(result > 0) {
+            sqlSession.commit();
+        }else{
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result;
+    }
 }

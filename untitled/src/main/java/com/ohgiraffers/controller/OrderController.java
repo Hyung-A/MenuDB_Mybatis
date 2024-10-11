@@ -79,4 +79,17 @@ public class OrderController {
             orderPrintResult.printErrorMessage("update");
         }
     }
+
+    public void deleteOrder(Map<String, String> parameter) {
+        int code = Integer.parseInt(parameter.get("orderCode"));
+
+
+        int result = orderService.deleteOrder(code);
+        if(result > 0){
+            orderPrintResult.printSuccessMessage("delete");
+        }else {
+            orderPrintResult.printErrorMessage("delete");
+        }
+
+    }
 }
