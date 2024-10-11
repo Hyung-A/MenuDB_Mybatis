@@ -59,4 +59,24 @@ public class OrderController {
             orderPrintResult.printErrorMessage("insert");
         }
     }
+
+    public void modifyOrder(Map<String, String> parameter) {
+        int code = Integer.parseInt(parameter.get("code"));
+        String date = parameter.get("date");
+        String time = parameter.get("time");
+        int totalPrice = Integer.parseInt(parameter.get("totalPrice"));
+
+        OrderDTO order = new OrderDTO();
+        order.setCode(code);
+        order.setDate(date);
+        order.setTime(time);
+        order.setTotalPrice(totalPrice);
+
+        int result = orderService.modifyOrder(order);
+        if(result > 0){
+            orderPrintResult.printSuccessMessage("update");
+        }else {
+            orderPrintResult.printErrorMessage("update");
+        }
+    }
 }

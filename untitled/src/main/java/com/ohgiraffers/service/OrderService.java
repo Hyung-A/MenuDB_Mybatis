@@ -52,4 +52,22 @@ public class OrderService {
 
         return result;
     }
+
+    public int modifyOrder(OrderDTO order) {
+        SqlSession sqlSession = getSqlSession();
+
+        OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+
+        int result = orderMapper.modifyOrder(order);
+
+        if(result > 0) {
+            sqlSession.commit();
+        }else{
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result;
+    }
 }

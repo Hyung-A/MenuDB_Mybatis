@@ -39,4 +39,13 @@
         ,   #{ totalPrice }
         )
     </insert>
+
+    <update id="modifyOrder" parameterType="com.ohgiraffers.common.DTO.OrderDTO">
+        UPDATE TBL_ORDER
+        SET
+            ORDER_DATE = #{ date }
+        ,   ORDER_TIME = #{ time }
+        ,   TOTAL_ORDER_PRICE = #{ totalPrice }
+        WHERE ORDER_CODE = #{ code }
+    </update>
 </mapper>

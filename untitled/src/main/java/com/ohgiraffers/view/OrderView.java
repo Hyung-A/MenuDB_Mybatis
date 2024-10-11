@@ -31,6 +31,7 @@ public class OrderView {
                 case 1 :  orderController.selectAllOrder(); break;
                 case 2 :  orderController.selectOrderByCode(inputOrderCode()); break;
                 case 3 :  orderController.insertOrder(inputOrderInfo()); break;
+                case 4 :  orderController.modifyOrder(modifyOrderInfo()); break;
             }
 
         }while(true);
@@ -38,6 +39,26 @@ public class OrderView {
 
 
 
+    }
+
+    private Map<String, String> modifyOrderInfo() {
+        Scanner sc = new Scanner(System.in);
+        Map<String, String> orderInfo = new HashMap<>();
+        System.out.println("수정할 코드를 입력해주세요 : ");
+        String code = sc.nextLine();
+        System.out.println("수정할 주문내역의 date를 입력해주세요 : ");
+        String date = sc.nextLine();
+        System.out.println("수정할 주문내역의 time를 입력해주세요 : ");
+        String time = sc.nextLine();
+        System.out.println("수정할 주문내역의 총 판매액을 입력해주세요 : ");
+        String totalPrice = sc.nextLine();
+
+        orderInfo.put("code", code);
+        orderInfo.put("date", date);
+        orderInfo.put("time", time);
+        orderInfo.put("totalPrice", totalPrice);
+
+        return orderInfo;
     }
 
     private Map<String, String> inputOrderInfo() {
