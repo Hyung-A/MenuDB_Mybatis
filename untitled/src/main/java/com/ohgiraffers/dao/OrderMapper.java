@@ -7,4 +7,9 @@ import java.util.List;
 
 public interface OrderMapper {
     List<OrderDTO> selectAllOrder();
+
+    OrderDTO selectOrderByCode(int code);
+
+    int insertOrder(OrderDTO order);
+
 }

@@ -5,6 +5,7 @@ import com.ohgiraffers.service.OrderService;
 import com.ohgiraffers.view.OrderPrintResult;
 
 import java.util.List;
+import java.util.Map;
 
 
 public class OrderController {
@@ -21,10 +22,41 @@ public class OrderController {
         List<OrderDTO> orderList = orderService.selectAllOrder();
 
         if(orderList != null && orderList.size() > 0){
-            orderPrintResult.printOrder(orderList);
+            orderPrintResult.printOrderList(orderList);
         }else{
-            orderPrintResult.printErrorMessage("selectOne");
+            orderPrintResult.printErrorMessage("selectAll");
         }
 
+    }
+
+    public void selectOrderByCode(Map<String, String> parameter) {
+
+        int code = Integer.parseInt(parameter.get("orderCode"));
+
+        OrderDTO order = orderService.selectOrderByCode(code);
+
+        if(order != null){
+            orderPrintResult.printOrder(order);
+        }else {
+            orderPrintResult.printErrorMessage("selectOne");
+        }
+    }
+
+    public void insertOrder(Map<String, String> parameter) {
+        String date = parameter.get("date");
+        String time = parameter.get("time");
+        int totalPrice = Integer.parseInt(parameter.get("totalPrice"));
+
+        OrderDTO order = new OrderDTO();
+        order.setDate(date);
+        order.setTime(time);
+        order.setTotalPrice(totalPrice);
+
+        int result = orderService.insertOrder(order);
+        if(result > 0){
+            orderPrintResult.printSuccessMessage("insert");
+        }else {
+            orderPrintResult.printErrorMessage("insert");
+        }
     }
 }
