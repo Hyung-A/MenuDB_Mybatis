@@ -31,12 +31,25 @@ public class PaymentApplication {
                 case 1 : paymentController.selectAllPaymentInfo(); break;
                 case 2 : paymentController.registPayment(inputPayment());
                 case 3 : paymentController.modifyPayment(inputModifyPayment()); break;
+                case 4 : paymentController.deletePayment(inputPaymentCode()); break;
                 default:
                     System.out.println("잘못된 메뉴를 선택하셨습니다");
                     break;
             }
 
         } while (true);
+    }
+
+    private static Map<String, String> inputPaymentCode(){
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Payment 코드를 입력하세요 : ");
+        String code = sc.nextLine();
+
+        Map<String, String> parameter = new HashMap<>();
+        parameter.put("payment_code", code);
+
+        return parameter;
     }
 
     private static Map<String, String> inputPayment() {

@@ -48,5 +48,11 @@
                 PAYMENT_TYPE = #{ payment_type }
             WHERE PAYMENT_CODE = #{ payment_code }
     </update>
+
+    <delete id="deletePayment" parameterType="_int">
+        DELETE
+            FROM TBL_PAYMENT
+           WHERE PAYMENT_CODE = #{ payment_code }
+    </delete>
 </mapper>
 

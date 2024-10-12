@@ -62,4 +62,22 @@ public class PaymentService {
 
         return result > 0 ? true : false;
     }
+
+    public boolean deletePayment(int code) {
+
+        SqlSession sqlSession = getSqlSession();
+
+        PaymentMapper paymentMapper = sqlSession.getMapper(PaymentMapper.class);
+
+        int result = paymentMapper.deletePayment(code);
+
+        if (result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+        sqlSession.close();
+
+        return result > 0? true : false;
+    }
 }

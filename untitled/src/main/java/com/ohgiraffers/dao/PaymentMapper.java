@@ -11,4 +11,6 @@ public interface PaymentMapper {
     int insertPayment(PaymentDTO paymentDTO);
 
     int updatePayment(PaymentDTO paymentDTO);
+
+    int deletePayment(int code);
 }

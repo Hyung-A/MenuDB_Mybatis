@@ -73,4 +73,17 @@ public class PaymentController {
             paymentView.printErrorMessage("update");
         }
     }
+
+    public void deletePayment(Map<String, String> parameter) {
+
+        int code = Integer.parseInt(parameter.get("payment_code"));
+
+        if (paymentService.deletePayment(code)) {
+            paymentView.printSuccessMessage("delete");
+        } else {
+            paymentView.printErrorMessage("delete");
+        }
+
+    }
+
 }
