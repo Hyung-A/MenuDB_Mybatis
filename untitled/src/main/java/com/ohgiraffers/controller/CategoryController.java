@@ -72,4 +72,20 @@ public class CategoryController {
         }
 
     }
+
+    // Category 테이블 삭제
+    public void deleteCategory(Map<String, String> parameter){
+
+        int categoryCode = Integer.parseInt(parameter.get("categoryCode"));
+
+        CategoryDTO category = new CategoryDTO();
+        category.setCategoryCode(categoryCode);
+
+        if(categoryService.deleteCategory(category)){
+            categoryPrintResult.printSuccessMessage("deleteCategory");
+        } else{
+            categoryPrintResult.printErrorMessage("deleteCategory");
+        }
+    }
+
 }

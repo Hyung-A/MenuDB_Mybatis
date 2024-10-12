@@ -63,5 +63,25 @@ public class CategoryService {
         return result > 0 ? true : false;
     }
 
+    // 카테고리 삭제
+    public boolean deleteCategory(CategoryDTO category){
+
+        SqlSession sqlSession = getSqlSession();
+
+        CategoryMapper mapper = sqlSession.getMapper(CategoryMapper.class);
+
+        int result = mapper.deleteCategory(category);
+
+        if(result > 0){
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result > 0? true : false;
+    }
+
 
 }

@@ -47,6 +47,7 @@ public class CategoryView {
                 case 1 : categoryController.selectAllCategory(); break;
                 case 2 : categoryController.insertNewCategory(inputCategory()); break;
                 case 3 : categoryController.updateCategory(inputUpdateCategory()); break;
+                case 4 : categoryController.deleteCategory(whichCategory()); break;
                 case 9 : return;
             }
         }while(true);
@@ -90,6 +91,23 @@ public class CategoryView {
 
         return parameter;
     }
+
+
+    // 카테고리 삭제
+    private static Map<String, String> whichCategory(){
+        CategoryController categoryController = new CategoryController();
+
+        Scanner sc = new Scanner(System.in);
+        categoryController.selectAllCategory();
+        System.out.println("삭제하고싶은 카테고리 코드를 입력해주세요 : ");
+        String categoryCode = sc.nextLine();
+
+        Map<String, String> parameter = new HashMap<>();
+        parameter.put("categoryCode", categoryCode);
+
+        return parameter;
+    }
+
 
 
 }

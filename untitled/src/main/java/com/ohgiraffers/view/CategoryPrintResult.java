@@ -20,6 +20,7 @@ public class CategoryPrintResult {
         switch (successCode){
             case "insertNewCategory" : successMessage = "새로운 카테고리 추가에 성공하였습니다."; break;
             case "updateCategory" : successMessage = "카테고리 수정에 성공하였습니다."; break;
+            case "deleteCategory" : successMessage = "카테고리 삭제에 성공하였습니다."; break;
 
         }
         System.out.println(successMessage);
@@ -32,6 +33,7 @@ public class CategoryPrintResult {
             case "selectAllCategory" : errorMessage = "카테고리 전체 조회에 실패하였습니다."; break;
             case "insertNewCategory" : errorMessage = "새로운 카테고리 추가에 실패하였습니다."; break;
             case "updateCategory" : errorMessage = "카테고리 수정에 실패하였습니다."; break;
+            case "deleteCategory" : errorMessage = "카테고리 삭제에 실패하였습니다."; break;
 
         }
 
