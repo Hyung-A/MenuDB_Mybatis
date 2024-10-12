@@ -7,4 +7,6 @@ import java.util.List;
 public interface PaymentMapper {
 
     List<PaymentDTO> selectAllPaymentInfo();
+
+    int insertPayment(PaymentDTO paymentDTO);
 }
