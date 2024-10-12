@@ -8,7 +8,10 @@ import java.util.Scanner;
 
 public class PaymentApplication {
 
-        public void runPaymentApp(){
+    public static void main(String[] args) {
+
+
+//        public void runPaymentApp(){
 
 
         Scanner sc = new Scanner(System.in);
@@ -27,7 +30,7 @@ public class PaymentApplication {
             switch (no) {
                 case 1 : paymentController.selectAllPaymentInfo(); break;
                 case 2 : paymentController.registPayment(inputPayment());
-
+                case 3 : paymentController.modifyPayment(inputModifyPayment()); break;
                 default:
                     System.out.println("잘못된 메뉴를 선택하셨습니다");
                     break;
@@ -55,7 +58,30 @@ public class PaymentApplication {
         parameter.put("payment_type", type);
 
         return parameter;
+    }
 
+    private static  Map<String, String> inputModifyPayment(){
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("수정할 Payment 코드를 입력하세요 : ");
+        String code = sc.nextLine();
+        System.out.println("수정할 Payment 날짜를 입력하세요 : ");
+        String date = sc.nextLine();
+        System.out.println("수정할 Payment 시간을 입력하세요 : ");
+        String time = sc.nextLine();
+        System.out.println("수정할 Payment 가격을 입력하세요 : ");
+        String price = sc.nextLine();
+        System.out.println("수정할 Payment 방식을 입력하세요 : ");
+        String type = sc.nextLine();
+
+        Map<String, String> parameter = new HashMap<>();
+        parameter.put("payment_code", code);
+        parameter.put("payment_date", date);
+        parameter.put("payment_time", time);
+        parameter.put("payment_price", price);
+        parameter.put("payment_type", type);
+
+        return parameter;
     }
 
 }

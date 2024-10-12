@@ -38,7 +38,15 @@
             #{ payment_price },
             #{ payment_type }
         )
-
     </insert>
+
+    <update id="updatePayment" parameterType="com.ohgiraffers.common.DTO.PaymentDTO">
+        UPDATE TBL_PAYMENT
+            SET PAYMENT_DATE = #{ payment_date },
+                PAYMENT_TIME = #{ payment_time },
+                PAYMENT_PRICE = #{ payment_price },
+                PAYMENT_TYPE = #{ payment_type }
+            WHERE PAYMENT_CODE = #{ payment_code }
+    </update>
 </mapper>
 

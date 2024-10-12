@@ -24,6 +24,7 @@ public class PaymentService {
 
     }
 
+
     public boolean registPayment(PaymentDTO paymentDTO) {
 
         SqlSession sqlSession = getSqlSession();
@@ -33,6 +34,25 @@ public class PaymentService {
         int result = paymentMapper.insertPayment(paymentDTO);
 
         if(result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result > 0 ? true : false;
+    }
+
+    public boolean modifyPayment(PaymentDTO paymentDTO) {
+
+        SqlSession sqlSession = getSqlSession();
+
+        PaymentMapper paymentMapper = sqlSession.getMapper(PaymentMapper.class);
+
+        int result = paymentMapper.updatePayment(paymentDTO);
+
+        if(result > 0){
             sqlSession.commit();
         } else {
             sqlSession.rollback();

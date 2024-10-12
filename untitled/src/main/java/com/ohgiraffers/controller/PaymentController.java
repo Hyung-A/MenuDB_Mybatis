@@ -51,4 +51,26 @@ public class PaymentController {
 
 
     }
+
+    public void modifyPayment(Map<String, String> parameter) {
+
+        int code = Integer.parseInt(parameter.get("payment_code"));
+        String date = parameter.get("payment_date");
+        String time = parameter.get("payment_time");
+        int price = Integer.parseInt(parameter.get("payment_price"));
+        String type = parameter.get("payment_type");
+
+        PaymentDTO paymentDTO = new PaymentDTO();
+        paymentDTO.setPayment_code(code);
+        paymentDTO.setPayment_date(date);
+        paymentDTO.setPayment_time(time);
+        paymentDTO.setPayment_price(price);
+        paymentDTO.setPayment_type(type);
+
+        if(paymentService.modifyPayment(paymentDTO)) {
+            paymentView.printSuccessMessage("update");
+        } else {
+            paymentView.printErrorMessage("update");
+        }
+    }
 }

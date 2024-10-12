@@ -24,6 +24,7 @@ public class PaymentView {
         switch (errorCode) {
             case "selectList" : errorMessage = "Payment 목록 조회를 실패하였습니다."; break;
             case "insert" : errorMessage = "Payment 등록을 실패하였습니다."; break;
+            case "update" : errorMessage = "Payment 수정을 실패하였씁니다."; break;
         }
 
         System.out.println(errorMessage);
@@ -34,6 +35,7 @@ public class PaymentView {
         String successMessage = "";
         switch (successCode) {
             case "insert" : successMessage = "Payment 등록을 성공하였습니다."; break;
+            case "update" : successMessage = "Payment 수정을 성공하였습니다."; break;
         }
 
         System.out.println(successMessage);
