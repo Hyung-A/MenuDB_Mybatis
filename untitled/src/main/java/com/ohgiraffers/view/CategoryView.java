@@ -44,16 +44,16 @@ public class CategoryView {
             int no = sc.nextInt();
 
             switch (no) {
-                case 1:
-                    categoryController.selectAllCategory(); break;
+                case 1 : categoryController.selectAllCategory(); break;
                 case 2 : categoryController.insertNewCategory(inputCategory()); break;
-                case 9:
-                    return;
+                case 3 : categoryController.updateCategory(inputUpdateCategory()); break;
+                case 9 : return;
             }
         }while(true);
 
     }
 
+    // 새로운 카테고리 추가
     private static Map<String, String> inputCategory(){
 
         Scanner sc = new Scanner(System.in);
@@ -61,7 +61,7 @@ public class CategoryView {
 //        String categoryCode = sc.nextLine();
         System.out.println("추가할 카테고리 이름을 입력해주세요 : ");
         String categoryName = sc.nextLine();
-        System.out.println("추가할 참조 카테고리 코드를 입력해주세요 : ");
+        System.out.println("추가할 참조 카테고리 코드를 입력해주세요(1.식사, 2.음료, 3.디저트) : ");
         String refCategoryCode = sc.nextLine();
 
         Map<String, String> parameter = new HashMap<>();
@@ -72,6 +72,24 @@ public class CategoryView {
         return parameter;
     }
 
+    // 카테고리 수정
+    private static Map<String, String> inputUpdateCategory(){
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("수정하고싶은 카테고리 코드를 입력해주세요 : ");
+        String categoryCode = sc.nextLine();
+        System.out.println( categoryCode + "번 카테코리 코드의 수정할 이름을 입력해주세요 : ");
+        String categoryName = sc.nextLine();
+        System.out.println("수정할 참조 카테고리 코드를 입력해주세요(1.식사, 2.음료, 3.디저트) : ");
+        String refCategoryCode = sc.nextLine();
+
+        Map<String, String> parameter = new HashMap<>();
+        parameter.put("categoryCode", categoryCode);
+        parameter.put("categoryName", categoryName);
+        parameter.put("refCategoryCode", refCategoryCode);
+
+        return parameter;
+    }
 
 
 }

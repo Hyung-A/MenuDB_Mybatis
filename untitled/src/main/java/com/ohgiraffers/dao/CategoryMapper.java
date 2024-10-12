@@ -10,4 +10,7 @@ public interface CategoryMapper {
 
     int insertNewCategory(CategoryDTO category);
 
+    int updateCategory(CategoryDTO category);
+
+
 }

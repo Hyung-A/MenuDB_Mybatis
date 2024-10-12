@@ -34,6 +34,7 @@ public class CategoryController {
 
     }
 
+    // Category 테이블 추가
     public void insertNewCategory(Map<String, String> parameter){
 
 //        int categoryCode = Integer.parseInt(parameter.get("categoryCode"));
@@ -52,6 +53,23 @@ public class CategoryController {
         }
     }
 
+    // Category 테이블 수정
+    public void updateCategory(Map<String, String> parameter){
 
+        int categoryCode = Integer.parseInt(parameter.get("categoryCode"));
+        String categoryName = parameter.get("categoryName");
+        int refCategoryCode = Integer.parseInt(parameter.get("refCategoryCode"));
 
+        CategoryDTO category = new CategoryDTO();
+        category.setCategoryCode(categoryCode);
+        category.setCategoryName(categoryName);
+        category.setRefCategoryCode(refCategoryCode);
+
+        if(categoryService.updateCategory(category)){
+            categoryPrintResult.printSuccessMessage("updateCategory");
+        } else {
+            categoryPrintResult.printErrorMessage("updateCategory");
+        }
+
+    }
 }

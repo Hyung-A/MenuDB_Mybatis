@@ -10,6 +10,7 @@ import static com.ohgiraffers.common.Template.getSqlSession;
 
 public class CategoryService {
 
+    // 모든 카테고리 조회
     public List<CategoryDTO> selectAllCategory(){
 
         SqlSession sqlSession = getSqlSession();
@@ -23,6 +24,7 @@ public class CategoryService {
         return categoryList;
     }
 
+    // 새로운 카테고리 추가
     public boolean insertNewCategory(CategoryDTO category){
 
         SqlSession sqlSession = getSqlSession();
@@ -40,5 +42,26 @@ public class CategoryService {
 
         return result > 0 ? true : false;
     }
+
+    // 카테고리 수정
+    public boolean updateCategory(CategoryDTO category){
+
+        SqlSession sqlSession = getSqlSession();
+
+        CategoryMapper mapper = sqlSession.getMapper(CategoryMapper.class);
+
+        int result = mapper.updateCategory(category);
+
+        if(result > 0 ){
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result > 0 ? true : false;
+    }
+
 
 }
