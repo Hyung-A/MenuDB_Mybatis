@@ -16,6 +16,6 @@
         </environment>
     </environments>
     <mappers>
-        <package name="com.ohgiraffers.dao.OrderMapper.xml"/>
+        <package name="com.ohgiraffers.dao.MenuMapper.xml"/>
     </mappers>
 </configuration>

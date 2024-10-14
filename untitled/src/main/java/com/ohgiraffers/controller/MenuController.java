@@ -6,6 +6,7 @@ import com.ohgiraffers.view.MenuPrintResult;
 import com.ohgiraffers.view.MenuView;
 
 import java.util.List;
+import java.util.Map;
 
 public class MenuController {
 
@@ -25,7 +26,26 @@ public class MenuController {
         if(menuList != null) {
             printResult.printMenuList(menuList);
         } else {
-            printResult.errorMesssage("selectAllMenu");
+            printResult.printErrorMessage("selectAllMenu");
         }
+    }
+
+    public void registMenu(Map<String, String> parameter) {
+
+        String name = parameter.get("name");
+        int price = Integer.parseInt(parameter.get("price"));
+        int categoryCode = Integer.parseInt(parameter.get("categoryCode"));
+
+        MenuDTO menuDTO = new MenuDTO();
+        menuDTO.setName(name);
+        menuDTO.setPrice(price);
+        menuDTO.setCategoryCode(categoryCode);
+
+        if(menuService.registMenu(menuDTO)) {
+            printResult.printSuccessMessage("insert");
+        } else {
+            printResult.printErrorMessage("insert");
+        }
+
     }
 }
