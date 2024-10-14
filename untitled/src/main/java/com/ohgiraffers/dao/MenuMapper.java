@@ -9,4 +9,6 @@ public interface MenuMapper {
     List<MenuDTO> selectAllMenu();
 
     int insertMenu(MenuDTO menuDTO);
+
+    int modifyMenu(MenuDTO menuDTO);
 }

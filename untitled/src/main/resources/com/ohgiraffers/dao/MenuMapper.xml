@@ -40,4 +40,12 @@
         )
     </insert>
 
+    <update id="modifyMenu" parameterType="com.ohgiraffers.common.DTO.MenuDTO">
+        UPDATE TBL_MENU
+        SET MENU_NAME = #{ name }
+        , MENU_PRICE = #{ price }
+        , CATEGORY_CODE = #{ categoryCode }
+        WHERE MENU_CODE = #{ code }
+    </update>
+
 </mapper>
