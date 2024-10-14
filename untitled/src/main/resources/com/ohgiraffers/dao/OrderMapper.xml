@@ -18,4 +18,40 @@
         ,   TOTAL_ORDER_PRICE
         FROM TBL_ORDER;
     </select>
+
+    <select id="selectOrderByCode" resultMap="orderResultMap">
+        SELECT *
+        FROM TBL_ORDER
+        WHERE ORDER_CODE = #{ code };
+    </select>
+
+    <insert id="insertOrder" parameterType="com.ohgiraffers.common.DTO.OrderDTO">
+        INSERT INTO TBL_ORDER
+        (
+            ORDER_DATE
+        ,   ORDER_TIME
+        ,   TOTAL_ORDER_PRICE
+        )
+        VALUES
+        (
+            #{ date }
+        ,   #{ time }
+        ,   #{ totalPrice }
+        )
+    </insert>
+
+    <update id="modifyOrder" parameterType="com.ohgiraffers.common.DTO.OrderDTO">
+        UPDATE TBL_ORDER
+        SET
+            ORDER_DATE = #{ date }
+        ,   ORDER_TIME = #{ time }
+        ,   TOTAL_ORDER_PRICE = #{ totalPrice }
+        WHERE ORDER_CODE = #{ code }
+    </update>
+
+    <delete id="deleteOrder">
+        DELETE
+            FROM TBL_ORDER
+        WHERE ORDER_CODE = #{ code }
+    </delete>
 </mapper>

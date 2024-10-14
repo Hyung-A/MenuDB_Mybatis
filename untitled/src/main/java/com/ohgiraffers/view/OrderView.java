@@ -1,7 +1,10 @@
 package com.ohgiraffers.view;
 
+import com.ohgiraffers.common.DTO.OrderDTO;
 import com.ohgiraffers.controller.OrderController;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class OrderView {
@@ -26,6 +29,10 @@ public class OrderView {
             int no = sc.nextInt();
             switch (no){
                 case 1 :  orderController.selectAllOrder(); break;
+                case 2 :  orderController.selectOrderByCode(inputOrderCode()); break;
+                case 3 :  orderController.insertOrder(inputOrderInfo()); break;
+                case 4 :  orderController.modifyOrder(modifyOrderInfo()); break;
+                case 5 :  orderController.deleteOrder(inputOrderCode()); break;
             }
 
         }while(true);
@@ -33,6 +40,54 @@ public class OrderView {
 
 
 
+    }
+
+    private Map<String, String> modifyOrderInfo() {
+        Scanner sc = new Scanner(System.in);
+        Map<String, String> orderInfo = new HashMap<>();
+        System.out.println("수정할 코드를 입력해주세요 : ");
+        String code = sc.nextLine();
+        System.out.println("수정할 주문내역의 date를 입력해주세요 : ");
+        String date = sc.nextLine();
+        System.out.println("수정할 주문내역의 time를 입력해주세요 : ");
+        String time = sc.nextLine();
+        System.out.println("수정할 주문내역의 총 판매액을 입력해주세요 : ");
+        String totalPrice = sc.nextLine();
+
+        orderInfo.put("code", code);
+        orderInfo.put("date", date);
+        orderInfo.put("time", time);
+        orderInfo.put("totalPrice", totalPrice);
+
+        return orderInfo;
+    }
+
+    private Map<String, String> inputOrderInfo() {
+        Scanner sc = new Scanner(System.in);
+        Map<String, String> orderInfo = new HashMap<>();
+        System.out.println("추가할 주문내역의 date를 입력해주세요 : ");
+        String date = sc.nextLine();
+        System.out.println("추가할 주문내역의 time를 입력해주세요 : ");
+        String time = sc.nextLine();
+        System.out.println("추가할 주문내역의 총 판매액을 입력해주세요 : ");
+        String totalPrice = sc.nextLine();
+
+        orderInfo.put("date", date);
+        orderInfo.put("time", time);
+        orderInfo.put("totalPrice", totalPrice);
+
+        return orderInfo;
+    }
+
+    private Map<String, String> inputOrderCode() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("주문 번호를 입력해주세요 : ");
+        String orderCode = sc.nextLine();
+
+        Map<String, String> code = new HashMap<>();
+        code.put("orderCode", orderCode);
+
+        return code;
     }
 
 }
