@@ -13,14 +13,79 @@ public class OrderService {
     public List<OrderDTO> selectAllOrder() {
         SqlSession sqlSession = getSqlSession();
 
-//        에러 나는중인데 오타일 확률이 굉장히 높을 듯
-//        OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
 
-//        List<OrderDTO> orderList = orderMapper.selectAllOrder();
-        List<OrderDTO> orderList = null;
+        OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+
+        List<OrderDTO> orderList = orderMapper.selectAllOrder();
 
         sqlSession.close();
 
         return orderList;
+    }
+
+    public OrderDTO selectOrderByCode(int code) {
+        SqlSession sqlSession = getSqlSession();
+
+        OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+
+        OrderDTO order = orderMapper.selectOrderByCode(code);
+
+        sqlSession.close();
+
+        return order;
+    }
+
+    public int insertOrder(OrderDTO order) {
+        SqlSession sqlSession = getSqlSession();
+
+        OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+
+        int result = orderMapper.insertOrder(order);
+
+        if(result > 0) {
+            sqlSession.commit();
+        }else{
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result;
+    }
+
+    public int modifyOrder(OrderDTO order) {
+        SqlSession sqlSession = getSqlSession();
+
+        OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+
+        int result = orderMapper.modifyOrder(order);
+
+        if(result > 0) {
+            sqlSession.commit();
+        }else{
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result;
+    }
+
+    public int deleteOrder(int code) {
+        SqlSession sqlSession = getSqlSession();
+
+        OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+
+        int result = orderMapper.deleteOrder(code);
+
+        if(result > 0) {
+            sqlSession.commit();
+        }else{
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result;
     }
 }

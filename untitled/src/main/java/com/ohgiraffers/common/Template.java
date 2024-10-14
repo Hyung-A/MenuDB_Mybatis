@@ -1,6 +1,7 @@
 package com.ohgiraffers.common;
 
 
+import com.ohgiraffers.dao.OrderMapper;
 import com.ohgiraffers.dao.PaymentMapper;
 import com.ohgiraffers.dao.MenuMapper;
 import com.ohgiraffers.dao.CategoryMapper;
@@ -34,6 +35,7 @@ public class Template {
             configuration.addMapper(PaymentMapper.class);
             configuration.addMapper(MenuMapper.class);
             configuration.addMapper(CategoryMapper.class);
+            configuration.addMapper(OrderMapper.class);
 
 
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
