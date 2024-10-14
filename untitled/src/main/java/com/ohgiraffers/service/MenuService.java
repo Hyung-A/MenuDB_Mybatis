@@ -22,4 +22,23 @@ public class MenuService {
 
         return menuList;
     }
+
+    public boolean registMenu(MenuDTO menuDTO) {
+
+        SqlSession sqlSession = getSqlSession();
+
+        MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
+
+        int result = menuMapper.insertMenu(menuDTO);
+
+        if (result > 0) {
+            sqlSession.commit();
+        }else {
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result > 0 ? true : false;
+    }
 }

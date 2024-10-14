@@ -15,7 +15,4 @@
             </dataSource>
         </environment>
     </environments>
-    <mappers>
-        <package name="com.ohgiraffers.dao.PaymentMapper.xml"/>
-    </mappers>
 </configuration>

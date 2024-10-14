@@ -8,8 +8,8 @@
         <id property="code" column="MENU_CODE"/>
         <result property="name" column="MENU_NAME"/>
         <result property="price" column="MENU_PRICE"/>
-        <result property="category" column="CATEGORY_CODE"/>
-        <result property="oederableStatus" column="OEDERABLE_STATUS"/>
+        <result property="categoryCode" column="CATEGORY_CODE"/>
+        <result property="orderableStatus" column="ORDERABLE_STATUS"/>
     </resultMap>
 
     <select id="selectAllMenu" resultMap="menuResultMap">
@@ -20,8 +20,24 @@
              , CATEGORY_CODE
              , ORDERABLE_STATUS
           FROM TBL_MENU
-         WHERE ORDERABLE_STATUS = 'Y'
          ORDER BY MENU_CODE
     </select>
+
+    <insert id="insertMenu" parameterType="com.ohgiraffers.common.DTO.MenuDTO">
+        INSERT INTO TBL_MENU
+        (
+          MENU_NAME
+        , MENU_PRICE
+        , CATEGORY_CODE
+        , ORDERABLE_STATUS
+        )
+        VALUES
+        (
+          #{ name }
+        , #{ price }
+        , #{ categoryCode }
+        , 'Y'
+        )
+    </insert>
 
 </mapper>
