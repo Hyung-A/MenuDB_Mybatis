@@ -7,7 +7,6 @@ import java.util.List;
 public class PaymentView {
 
     public void printPaymentList(List<PaymentDTO> paymentList){
-
         for(PaymentDTO payment : paymentList){
             System.out.println(payment);
         }

@@ -11,12 +11,8 @@ import java.util.Scanner;
 
 public class MenuView {
 
-    public static void main(String[] args) {
 
-        startMenu();
-    }
-
-    public static void startMenu() {
+    public void startMenu() {
 
         Scanner sc = new Scanner(System.in);
 
@@ -28,6 +24,7 @@ public class MenuView {
             System.out.println("2. 신규 메뉴 추가");
             System.out.println("3. 메뉴 수정");
             System.out.println("4. 메뉴 삭제");
+            System.out.println("9. 이전 메뉴로 돌아가기");
             System.out.print("메뉴 관리 번호를 입력하세요 : ");
             int no = sc.nextInt();
 
@@ -36,6 +33,7 @@ public class MenuView {
                 case 2 : menuController.registMenu(inputMenu()); break;
                 case 3 : menuController.modifyMenu(inputModifyMenu()); break;
                 case 4 : menuController.deleteMenu(deleteMenu()); break;
+                case 9 : return;
                 default:
                     System.out.println("잘못된 메뉴를 선택하였습니다.");
             }

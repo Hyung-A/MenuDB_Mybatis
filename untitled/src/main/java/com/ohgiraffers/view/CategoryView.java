@@ -8,26 +8,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class CategoryView {
-    public static void main(String[] args) {
 
-        CategoryController categoryController = new CategoryController();
-
-        Scanner sc = new Scanner(System.in);
-
-        do {
-            System.out.println("================ Category 테이블 메뉴 ================");
-            System.out.println("1. CATEGOTY 서브메뉴 조회");
-            System.out.print("메뉴를 입력해주세요 : ");
-            int no = sc.nextInt();
-
-            switch (no) {
-                case 1 : startCategory(); break;
-            }
-        }while(true);
-
-    }
-
-    public static void startCategory(){
+    public void startCategory(){
 
         CategoryController categoryController = new CategoryController();
 

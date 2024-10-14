@@ -8,10 +8,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class OrderView {
-    public static void main(String[] args) {
-        OrderView orderView = new OrderView();
-        orderView.orderStart();
-    }
 
     public void orderStart(){
         Scanner sc = new Scanner(System.in);
@@ -33,6 +29,7 @@ public class OrderView {
                 case 3 :  orderController.insertOrder(inputOrderInfo()); break;
                 case 4 :  orderController.modifyOrder(modifyOrderInfo()); break;
                 case 5 :  orderController.deleteOrder(inputOrderCode()); break;
+                case 9 : return;
             }
 
         }while(true);

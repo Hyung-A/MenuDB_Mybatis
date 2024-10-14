@@ -8,10 +8,7 @@ import java.util.Scanner;
 
 public class PaymentApplication {
 
-    public static void main(String[] args) {
-
-
-//        public void runPaymentApp(){
+        public void runPaymentApp(){
 
 
         Scanner sc = new Scanner(System.in);
@@ -29,9 +26,10 @@ public class PaymentApplication {
 
             switch (no) {
                 case 1 : paymentController.selectAllPaymentInfo(); break;
-                case 2 : paymentController.registPayment(inputPayment());
+                case 2 : paymentController.registPayment(inputPayment()); break;
                 case 3 : paymentController.modifyPayment(inputModifyPayment()); break;
                 case 4 : paymentController.deletePayment(inputPaymentCode()); break;
+                case 9 : return;
                 default:
                     System.out.println("잘못된 메뉴를 선택하셨습니다");
                     break;
