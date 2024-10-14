@@ -8,4 +8,10 @@ public interface CategoryMapper {
 
     List<CategoryDTO> selectAllCategory();
 
+    int insertNewCategory(CategoryDTO category);
+
+    int updateCategory(CategoryDTO category);
+
+    int deleteCategory(CategoryDTO category);
+
 }

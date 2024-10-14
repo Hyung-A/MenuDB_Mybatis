@@ -20,4 +20,30 @@
          ORDER BY A.CATEGORY_CODE
     </select>
 
+    <insert id="insertNewCategory" parameterType="com.ohgiraffers.common.DTO.CategoryDTO">
+        INSERT INTO TBL_CATEGORY
+        (
+           CATEGORY_NAME
+         , REF_CATEGORY_CODE
+        )
+        VALUES
+        (
+           #{ categoryName }
+         , #{ refCategoryCode }
+        )
+    </insert>
+
+    <update id="updateCategory" parameterType="com.ohgiraffers.common.DTO.CategoryDTO">
+        UPDATE TBL_CATEGORY
+        SET CATEGORY_NAME = #{ categoryName }
+        , REF_CATEGORY_CODE = #{ refCategoryCode }
+        WHERE CATEGORY_CODE = #{ categoryCode }
+    </update>
+
+    <delete id="deleteCategory" parameterType="com.ohgiraffers.common.DTO.CategoryDTO">
+        DELETE
+        FROM TBL_CATEGORY
+        WHERE CATEGORY_CODE = #{ categoryCode }
+    </delete>
+
 </mapper>
