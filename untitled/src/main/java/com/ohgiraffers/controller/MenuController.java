@@ -70,14 +70,14 @@ public class MenuController {
 
     }
 
-//    public void deleteMenu(Map<String, String> parameter) {
-//
-//        int code = Integer.parseInt(parameter.get("code"));
-//
-//        if(menuService.deleteMenu(code)) {
-//            printResult.printSuccessMessage("delete");
-//        } else {
-//            printResult.printErrorMessage("delete");
-//        }
-//    }
+    public void deleteMenu(Map<String, String> parameter) {
+
+        int code = Integer.parseInt(parameter.get("code"));
+
+        if(menuService.deleteMenu(code)) {
+            printResult.printSuccessMessage("delete");
+        } else {
+            printResult.printErrorMessage("delete");
+        }
+    }
 }

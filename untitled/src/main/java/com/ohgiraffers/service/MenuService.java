@@ -61,4 +61,23 @@ public class MenuService {
         return result > 0 ? true : false;
     }
 
+    public boolean deleteMenu(int code) {
+
+        SqlSession sqlSession = getSqlSession();
+
+        MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
+
+        int result = menuMapper.deleteMenu(code);
+
+        if (result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result > 0 ? true : false;
+    }
+
 }

@@ -11,4 +11,6 @@ public interface MenuMapper {
     int insertMenu(MenuDTO menuDTO);
 
     int modifyMenu(MenuDTO menuDTO);
+
+    int deleteMenu(int code);
 }

@@ -35,7 +35,7 @@ public class MenuView {
                 case 1 : menuController.selectAllMenu(); break;
                 case 2 : menuController.registMenu(inputMenu()); break;
                 case 3 : menuController.modifyMenu(inputModifyMenu()); break;
-
+                case 4 : menuController.deleteMenu(deleteMenu()); break;
                 default:
                     System.out.println("잘못된 메뉴를 선택하였습니다.");
             }
@@ -82,5 +82,15 @@ public class MenuView {
         return parameter;
     }
 
+    private static Map<String, String> deleteMenu() {
 
+        Scanner sc = new Scanner(System.in);
+        System.out.println("삭제할 메뉴 코드를 입력하세요 : ");
+        String code = sc.nextLine();
+
+        Map<String, String> parameter = new HashMap<>();
+        parameter.put("code", code);
+
+        return parameter;
+    }
 }
